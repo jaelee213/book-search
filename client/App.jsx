@@ -1,0 +1,24 @@
+/**
+ * ********************************************
+ * 
+ * @module App.jsx
+ * @description renders BookInput and BookList
+ * 
+ * ********************************************
+ */
+
+import React from 'react';
+import MediaQuery from 'react-responsive';
+import BookInput from './components/BookInput';
+import BookList from './components/BookList';
+
+const App = () => {
+  return (
+    <div className="main-container">
+      <BookInput />
+      <BookList />
+    </div>
+  )
+};
+
+export default App;
