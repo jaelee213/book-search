@@ -1,0 +1,11 @@
+// allows us to use ES6 and React
+{
+  "presets": [
+    "env",
+    "react"
+  ],
+  "plugins": [
+    "transform-object-rest-spread", 
+    "transform-class-properties"
+  ],
+}
