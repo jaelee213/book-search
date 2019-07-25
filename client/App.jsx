@@ -8,7 +8,6 @@
  */
 
 import React from 'react';
-import MediaQuery from 'react-responsive';
 import BookInput from './components/BookInput';
 import BookList from './components/BookList';
 
