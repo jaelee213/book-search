@@ -27,7 +27,7 @@ const BookList = ({ isFetching, searchResults }) => {
     defaultHeight: ROW_HEIGHT,
   });
 
-  // method that renders BookItem components
+  // method that renders BookItem components in each cell of list
   const rowRenderer = ({ index, key, style, parent }) => {
     const currentBook = searchResults[index];
     return(
@@ -71,7 +71,7 @@ const BookList = ({ isFetching, searchResults }) => {
             <p>No results to display</p>
           </div>
         // otherwise render the list of book results
-        // * AutoSizer allows list to dynamically adjust dimensions based on window size
+        /* AutoSizer allows list to dynamically adjust dimensions based on window size */
         : <AutoSizer> 
             {({ height, width }) => (
               <List 
