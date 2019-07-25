@@ -9,7 +9,9 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { List } from 'react-virtualized';
+import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
+import 'react-virtualized/styles.css';
+import ReactLoading from 'react-loading';
 import BookItem from './BookItem';
 
 const mapStateToProps = store => ({
@@ -19,67 +21,71 @@ const mapStateToProps = store => ({
 
 const BookList = ({ isFetching, searchResults }) => {
   // specifications required for virtualized list
-  const LIST_HEIGHT = 600; 
-  const ROW_HEIGHT = 100;
-  const ROW_WIDTH = 600;
+  const ROW_HEIGHT = 150;
+  const cache = new CellMeasurerCache({
+    fixedWidth: true,
+    defaultHeight: ROW_HEIGHT,
+  });
 
   // method that renders BookItem components
-  const rowRenderer = ({ index, key, style }) => {
+  const rowRenderer = ({ index, key, style, parent }) => {
     const currentBook = searchResults[index];
     return(
-      <div className="book-item" key={key} style={style}>
-        <BookItem 
-          title={currentBook.title}
-          isbn={currentBook.isbn[0]}
-          publishedYear={currentBook.first_publish_year}
-        />
-      </div> 
+      // cell measurer allows each cell to dynamically adjust its 
+      // width and height depending on the size of its inner content
+      <CellMeasurer
+        key={key}
+        cache={cache}
+        parent={parent}
+        columnIndex={0}
+        rowIndex={index}
+      >
+        <div className="book-item" key={key} style={style}>
+          <BookItem 
+            title={currentBook.title}
+            isbn={currentBook.isbn[0]}
+            publishedYear={currentBook.first_publish_year}
+            index={index}
+            />
+        </div> 
+      </CellMeasurer>
     );
   };
 
   return(
-    <div className="book=list">
+    <div className="book-list">
       {isFetching 
-        ? <p>Loading...</p>
+        // render a loading screen when fetching from api
+        ? (<div className="other-display">
+            <ReactLoading t
+              type="bubbles" 
+              color="#000000" 
+              width={50}
+              height={50}
+            />
+            <p>Loading...</p>
+          </div>)
+        // render text when there is no results to display
         : !searchResults.length
-        ? <p>No results to display</p>
-        : <List 
-            width={ROW_WIDTH}
-            height={LIST_HEIGHT}
-            rowHeight={ROW_HEIGHT}
-            rowRenderer={rowRenderer}
-            rowCount={searchResults.length}
-          />
+        ? <div className="other-display">
+            <p>No results to display</p>
+          </div>
+        // otherwise render the list of book results
+        // * AutoSizer allows list to dynamically adjust dimensions based on window size
+        : <AutoSizer> 
+            {({ height, width }) => (
+              <List 
+              width={width}
+              height={height}
+              rowHeight={ROW_HEIGHT}
+              rowRenderer={rowRenderer}
+              rowCount={searchResults.length}
+              />
+            )}
+          </AutoSizer>
       }
     </div>
   );
-
-  /**  the non-ternary way to write the above code **/
-  // if (isFetching) {
-  //   return(
-  //     <div>
-  //       <p>Loading...</p>
-  //     </div>
-  //   );
-  // } else if (!searchResults.length) {
-  //   return(
-  //     <div>
-  //       <p>No results to display</p>
-  //     </div>
-  //   );
-  // } else {
-  //   return(
-  //     <div className="book-list">
-  //       <List 
-  //         width={ROW_WIDTH}
-  //         height={LIST_HEIGHT}
-  //         rowHeight={ROW_HEIGHT}
-  //         rowRenderer={rowRenderer}
-  //         rowCount={searchResults.length}
-  //       />
-  //     </div>
-  //   );
-  // }
 }
 
 export default connect(mapStateToProps, null)(BookList);
