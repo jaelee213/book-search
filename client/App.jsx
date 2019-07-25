@@ -15,6 +15,7 @@ import BookList from './components/BookList';
 const App = () => {
   return (
     <div className="main-container">
+      <h1>Book Search</h1>
       <BookInput />
       <BookList />
     </div>
