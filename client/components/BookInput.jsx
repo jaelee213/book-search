@@ -17,13 +17,13 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const BookInput = ({ getBooks }) => {
-	// wait 1500ms to invoke getBooks (until user finishes typing)
+	// wait 300ms to invoke getBooks (until user finishes typing)
 	const getBooksDebounced = debounce(getBooks, 300);
 	return(
-		<div>
-			<input 
-				placeholder="Enter book title" 
-				onChange={e => getBooksDebounced(e.target.value)} 
+		<div className="book-input">
+			<input
+				placeholder="Enter book title"
+				onChange={e => getBooksDebounced(e.target.value)}
 			/>
 		</div>
 	);
