@@ -11,6 +11,7 @@ import * as types from '../constants/actionTypes';
 
 const initialState = {
   isFetching: false, // bool indicator to utilize loading screen during fetch
+  subscription: null, // observable to wrap each fetch process
   searchResults: [], // array to hold book search results
 };
 
@@ -18,24 +19,27 @@ const bookReducer = (state=initialState, { type, payload }) => {
   switch (type) {
     case types.FETCH_IN_PROGRESS:
       return {
-        ...state, 
+        ...state,
         isFetching: true,
-        searchResults: [],
+        subscription: payload,
       };
 
     case types.FETCH_SUCCESS:
       return {
         ...state,
         isFetching: false,
+        subscription: null,
         searchResults: payload,
       };
-      
+
     case types.FETCH_ERROR:
       // throw an error message for any fetch errors that occur
       console.error('Following problem occured while fetching - ', payload);
       return {
         ...state,
         isFetching: false,
+        subscription: null,
+
       };
 
     default:
