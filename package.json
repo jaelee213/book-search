@@ -26,7 +26,8 @@
     "react-responsive": "^7.0.0",
     "react-virtualized": "^9.21.1",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "rxjs": "^6.5.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
