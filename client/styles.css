@@ -1,28 +1,85 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	overflow-y: hidden;
+	display: flex;
+	flex: 1;
+}
+
+h1 {
+	margin-top: 2rem;
+	font-weight: 200;
+}
+
+p {
+	margin: 0;
+}
+
+input {
+	outline: none;
+	width: 90%;
+	height: 40%;
+	padding: 0.5rem 0.3rem;
+	font-size: 1rem;
+	border-radius: 0.5rem;
+	border-width: thin;
+	border: solid 1px lightgray;
+}
+
+#root {
+	display: flex;
+	flex: 1;
+}
+
 .main-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	flex: 1;
 }
 
 .book-list {
-	border: solid darkgray 0.1rem;
-	border-width: thin;
-	border-radius: 0.2rem;
-	width: 50%;
 	padding: 0.2rem;
+	width: 80%;
 	display: flex;
+	height: 75%;
+}
+
+.book-input {
+	width: 88%;
+	margin-top: 1rem;
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
+	flex: 1;
 }
 
 .book-item {
 	border-bottom: solid lightgray 0.1rem;
 	border-width: thin;
-	margin: 0.5rem 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	margin: 0;
 }
 
-p {
-	margin: 0;
+.book-title {
+	font-size: 1rem;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 0.5rem;
+}
+
+.book-info {
+	font-size: 0.9rem;
+}
+
+.other-display {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
