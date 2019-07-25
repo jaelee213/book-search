@@ -45,6 +45,7 @@ const BookList = ({ isFetching, searchResults }) => {
             title={currentBook.title}
             isbn={currentBook.isbn[0]}
             publishedYear={currentBook.first_publish_year}
+            author={currentBook.author_name}
             index={index}
             />
         </div> 

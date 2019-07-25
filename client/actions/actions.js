@@ -36,7 +36,9 @@ export const getBooks = (title, prevSubs) => dispatch => {
       // first param is callback that listens to values emitted from observer.next
       (docs) => {
         // filter result by books that have title, isbn #, first publish year
-        const searchResults = docs.filter(book => book.title && book.isbn && book.first_publish_year);
+        const searchResults = docs.filter(book => {
+          return book.title && book.isbn && book.first_publish_year && book.author_name;
+        });
         dispatch(fetchSuccess(searchResults));
       },
       // second param is callback that listens to values emitted from observer.error
