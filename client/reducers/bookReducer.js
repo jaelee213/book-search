@@ -10,7 +10,7 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  isFetching: false, // bool indicator to utilize loading screen during fetch
+  isFetching: false, // bool to indicate processing fetch request
   subscription: null, // observable to wrap each fetch process
   searchResults: [], // array to hold book search results
 };
@@ -26,7 +26,6 @@ const bookReducer = (state=initialState, { type, payload }) => {
 
     case types.FETCH_SUCCESS:
       return {
-        ...state,
         isFetching: false,
         subscription: null,
         searchResults: payload,
@@ -39,7 +38,6 @@ const bookReducer = (state=initialState, { type, payload }) => {
         ...state,
         isFetching: false,
         subscription: null,
-
       };
 
     default:

@@ -46,8 +46,8 @@ export const getBooks = (title, prevSubs) => dispatch => {
       // third param is callback that listens to the invocation of observer.complete
       null,
     );
-     // dispatch action to indicate existing subscription (fetch in progress)
-     dispatch(fetchInProgress(subscription));
+    // dispatch action to indicate existing subscription (fetch in progress)
+    dispatch(fetchInProgress(subscription));
     return;
   }
 };

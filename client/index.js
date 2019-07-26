@@ -2,7 +2,7 @@
  * ************************************
  * 
  * @module index.js
- * @description entry point of react/redux application
+ * @description entry point of app
  * 
  * ************************************
  */

@@ -1,10 +1,10 @@
 /**
- * ************************************
+ * *************************************
  * 
  * @module store.js
  * @description centralized state of app 
  * 
- * ************************************
+ * *************************************
  */
 
 import { createStore, applyMiddleware } from 'redux';
