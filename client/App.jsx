@@ -18,7 +18,7 @@ const App = () => {
       <BookInput />
       <BookList />
     </div>
-  )
+  );
 };
 
 export default App;
