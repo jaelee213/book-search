@@ -17,6 +17,7 @@ GUI that takes a book title input by the user, searches for matches using the Op
 # Notes
 - bundled using parcel.js
 - incorporated RxJS Observables to avoid getting stale data (wrapped each fetch request in an Observable to make it feasible to subscribe and unsubscribe from desired/undesired fetch requests)
-- used *redux thunk* to process async actions (fetch requests) within action creators
+- used *redux thunk* middleware to have fetch request within action creators
+- used *lodash* *debounce* method to only send fetch request after user has stopped typing for 300ms
 - utilized *react-virtualized* to render list and *react-loading* for the loading animation
-- application is responsive to desktop, mobile, and table viewports
+- application is responsive in desktop, mobile, and table viewports
