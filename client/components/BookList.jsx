@@ -15,7 +15,7 @@ import ReactLoading from 'react-loading';
 import BookItem from './BookItem';
 
 const mapStateToProps = store => ({
-  isFetching: store.isFetching,
+  isFetching: store.isFetching, // bool indicating fetch-in-progress (load animation)
   searchResults: store.searchResults,
 });
 
@@ -43,7 +43,7 @@ const BookList = ({ isFetching, searchResults }) => {
         <div className="book-item" key={key} style={style}>
           <BookItem 
             title={currentBook.title}
-            isbn={currentBook.isbn[0]}
+            isbn={currentBook.isbn[0]} // only care about the first isbn #
             publishedYear={currentBook.first_publish_year}
             author={currentBook.author_name}
             index={index}
